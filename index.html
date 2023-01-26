@@ -4,26 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Google Fonts bellow -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+    
     <title>Trivia</title>
 </head>
 
 <body>
-   
     <div class="container">
+        <h1 class="title">Guess who I am!</h1> 
+
         <div>       
-            <h1>Trivia!</h1> 
-            <h2>Question</h2>
+           
+            <h2 class="question">Question</h2>
         </div>
-        <div>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
-            <button>Button</button>
+        <div class="buttons">
+            <button class="answer">Button1 </button>
+           
         </div>
-        <div>
-            <button>Next</button>
+        <div class="controlbtn">
+            <button id="start">Let's Play</button>
+            <button class="nextbt">Next</button>
         </div>
     </div>
+
+    <script src="./index.js"></script>
 
     
 </body>

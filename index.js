@@ -1,6 +1,6 @@
 
 const questionCont = document.getElementById('questionBox')
-const answersBtns = document.getElementById('buttonCont')
+const answersBtns = document.querySelectorAll('buttons')
 
 
 //displaying question images//
@@ -8,27 +8,36 @@ const questionImage = document.getElementById('questionImg')
 
 function displayQuestion(questionPic){
     questionImage.innerHTML = questions[0].questionPic
-        const button = document.createElement('button')
-        button.innerHTML = questions.answers.answer
-        button.classList.add('btn')
-        if (answer.correct) {
-          button.dataset.correct = answer.correct
-        }
-        button.addEventListener('click', selectAnswer)
-        answersBtnsappendChild(button)
+
+    
+        // const button = document.createElement('button')
+        // button.innerHTML = questions.answers.answer
+        // button.classList.add('btn')
+        // if (answer.correct) {
+        //   button.dataset.correct = answer.correct
+        // }
+        // button.addEventListener('click', selectAnswer)
+        // answersBtnsappendChild(button)
       }
 
+function displayChoices(questions){
+    const button = document.createElement('button')
+    button.innerHTML = choices['Dog']
+    answersBtns.innerText = questions.answers
+}
+
+
+
 //shuffle questions
-let shuffledQuestions, currentQuestionIndex
+let shuffledQuestions, currentQuestion
 //play button and game//
 const playButton = document.getElementById('start')
 playButton.addEventListener('click', playGame)
 
    function playGame(){
     // console.log('gamestarted')
-    // playButton.classList.add('hide')
     shuffledQuestions = questions.sort(()=> Math.random()- .5)
-    currentQuestionIndex = 0
+    currentQuestion = 0
     // GOT DISAPEAR PLAY BUTTON FROM THIS SITE BELOW//
     // https://stackoverflow.com/questions/8685107/hiding-a-button-in-javascript // // 
     if(playGame) {
@@ -41,7 +50,7 @@ playButton.addEventListener('click', playGame)
 
 //nextquestion
 function nextQuestion(){
-    displayQuestion(shuffledQuestions[currentQuestionIndex])
+    displayQuestion(shuffledQuestions[currentQuestion])
 }
 
 
@@ -56,24 +65,25 @@ function nextQuestion(){
 // https://stackoverflow.com/questions/49729105/how-to-add-an-image-to-javascript-quiz//
 const questions = [
     {
-    id : '0',    
+    number : 0,    
     questionPic: `<img src='./assets/animalPictures/dog.jpg' alt="Dog">`,
-    answers: [
+    choices: [
         {answer: 'Dog', correct: true}, 
         {answer: 'Cat', correct: false},
         {answer: 'Horse', correct: false},
-        {answer: 'Bird', correct: false},
+        {answer:'Bird', correct: false},
     ]
+    
 },
 
     {
     number : 1, 
     questionPic: `<img src='./assets/animalPictures/tiger.jpg' alt="Tiger">`,
     answers: [
-        {text: 'Lion', correct: false}, 
-        {text: 'Tiger', correct: true},
-        {text: 'Puma', correct: false},
-        {text: 'Leopard', correct: false},
+        {answer: 'Lion', correct: false}, 
+        {answer: 'Tiger', correct: true},
+        {answer: 'Puma', correct: false},
+        {answer: 'Leopard', correct: false},
     ]
 },
 
@@ -81,20 +91,20 @@ const questions = [
     number : 2, 
     questionPic: `<img src='./assets/animalPictures/rhino.jpg' alt="Rhino">`,
     answers: [
-        {text: 'Elephant', correct: false}, 
-        {text: 'Turtle', correct: false},
-        {text: 'Antilope', correct: false},
-        {text: 'Rhino', correct: true},
+        {answer: 'Elephant', correct: false}, 
+        {answer: 'Turtle', correct: false},
+        {answer: 'Antilope', correct: false},
+        {answer: 'Rhino', correct: true},
     ]
 },
   {
     number : 3, 
     questionPic:`<img src='./assets/animalPictures/turkey.jpg' alt="Turkey">`,
     answers: [
-        {text: 'Chicken', correct: false}, 
-        {text: 'Pig', correct: false},
-        {text: 'Turkey', correct: true},
-        {text: 'Cow', correct: false},
+        {answer: 'Chicken', correct: false}, 
+        {answer: 'Pig', correct: false},
+        {answer: 'Turkey', correct: true},
+        {answer: 'Cow', correct: false},
     ]
 },
 
@@ -102,10 +112,10 @@ const questions = [
     number : 4, 
     questionPic: `<img src='./assets/animalPictures/polarBear.jpg' alt="Polar Bear">`,
     answers: [
-        {text: 'Zebra', correct: false}, 
-        {text: 'Polar Bear', correct: true},
-        {text: 'Wolf', correct: false},
-        {text: 'Fox', correct: false},
+        {answer: 'Zebra', correct: false}, 
+        {answer: 'Polar Bear', correct: true},
+        {answer: 'Wolf', correct: false},
+        {answer: 'Fox', correct: false},
     ]
 }
 ]

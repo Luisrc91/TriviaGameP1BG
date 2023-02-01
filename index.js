@@ -10,14 +10,7 @@ function displayQuestion(questionPic){
     questionImage.innerHTML = questions[0].questionPic
 
     
-        // const button = document.createElement('button')
-        // button.innerHTML = questions.answers.answer
-        // button.classList.add('btn')
-        // if (answer.correct) {
-        //   button.dataset.correct = answer.correct
-        // }
-        // button.addEventListener('click', selectAnswer)
-        // answersBtnsappendChild(button)
+       
       }
 
 function displayChoices(questions){
@@ -79,7 +72,7 @@ const questions = [
     {
     number : 1, 
     questionPic: `<img src='./assets/animalPictures/tiger.jpg' alt="Tiger">`,
-    answers: [
+    choices: [
         {answer: 'Lion', correct: false}, 
         {answer: 'Tiger', correct: true},
         {answer: 'Puma', correct: false},
@@ -90,7 +83,7 @@ const questions = [
     {
     number : 2, 
     questionPic: `<img src='./assets/animalPictures/rhino.jpg' alt="Rhino">`,
-    answers: [
+    choices: [
         {answer: 'Elephant', correct: false}, 
         {answer: 'Turtle', correct: false},
         {answer: 'Antilope', correct: false},
@@ -100,7 +93,7 @@ const questions = [
   {
     number : 3, 
     questionPic:`<img src='./assets/animalPictures/turkey.jpg' alt="Turkey">`,
-    answers: [
+    choices: [
         {answer: 'Chicken', correct: false}, 
         {answer: 'Pig', correct: false},
         {answer: 'Turkey', correct: true},
@@ -111,7 +104,7 @@ const questions = [
     {
     number : 4, 
     questionPic: `<img src='./assets/animalPictures/polarBear.jpg' alt="Polar Bear">`,
-    answers: [
+    choices: [
         {answer: 'Zebra', correct: false}, 
         {answer: 'Polar Bear', correct: true},
         {answer: 'Wolf', correct: false},

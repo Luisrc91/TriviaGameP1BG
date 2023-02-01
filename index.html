@@ -14,20 +14,22 @@
 </head>
 
 <body>
+    
     <div class="container">
-        <h1 class="title">Guess who I am!</h1> 
-
-        <div>       
-           
-            <h2 class="question">Question</h2>
-        </div>
-        <div class="buttons">
-            <button class="answer">Button1 </button>
-           
+        <h1 class="titleQuestion">Guess who I am!</h1> 
+        <div  id="questionBox" class='hide'>
+            <div><p  id="questionImg" ></p></div>
+            <div class="buttonContr" id="buttonCont">
+                <button class="buttons" id="answerOne"> </button>
+                <button class="buttons" id="answerTwo"> </button>
+                <button class="buttons" id="answerThree"> </button>
+                <button class="buttons" id="answerFour"> </button>
+            </div>
         </div>
         <div class="controlbtn">
-            <button id="start">Let's Play</button>
+            <button  id="start">Let's Play</button>
             <button class="nextbt">Next</button>
+            
         </div>
     </div>
 

@@ -1,6 +1,14 @@
 const questionCont = document.getElementById('questionBox')
 const answersBtns = document.querySelectorAll('buttons')
 const nextBtn = document.getElementById('nextBtn')
+const choiceList = document.getElementById('buttonContr')
+const yourScore = document.getElementById('yourScore')
+const scoreBoard = document.createElement('h3')
+scoreBoard.innerHTML = '0';
+document.getElementById('yourScore').appendChild(h3)
+// let score = 0;
+
+
 
 const questions = [
     {
@@ -55,11 +63,22 @@ const questions = [
     }
 ]
 
+
+function userScore() {
+    if (selectedAnswer === 'correct') {
+        scoreCounter = scoreCounter + 5; // increases scoreCounter by 5
+
+        // sets the element text to the current score
+        scoreCounterElemet.innerText = scoreCounter; 
+    }
+    console.log('Increase Score')
+}
+
 //displaying question images//
 const questionImage = document.getElementById('questionImg')
 
 function displayQuestion(currentQuestion){
-    console.log(shuffledQuestions[currentQuestion])
+    // console.log(shuffledQuestions[currentQuestion])
     questionImage.innerHTML = shuffledQuestions[currentQuestion].questionPic
     const choices = shuffledQuestions[currentQuestion].choices
     choices.forEach(choice => {
@@ -67,33 +86,52 @@ function displayQuestion(currentQuestion){
         button.textContent = choice.answer
         button.class = 'buttons'
         button.id = choice.correct
-
         button.addEventListener('click', (e) => {
-            if (e.target.id === true) {
+            if (e.target.id === true) {      
+            
                 // make score go up by one and update dom
-                currentQuestion++
+                currentQuestion++                
                 nextQuestion(currentQuestion)
             } else {
                 currentQuestion++
                 nextQuestion(currentQuestion)
             }
-        })
+            
 
+        }) 
         const choiceList = document.getElementById('buttonContr')
-        choiceList.appendChild(button)
+        choiceList.appendChild(button) 
+        
     })
 }
 
+
+let score = 0;
+const q =questions
+let userAnswer 
+if (userAnswer === q ){
+    score++
+}
+console
+
+
 //shuffle questions
 let shuffledQuestions, currentQuestion
+
+
+
 //play button and game//
 const playButton = document.getElementById('start')
 playButton.addEventListener('click', playGame)
 
 shuffledQuestions = questions.sort(()=> Math.random()- .5)
-console.log(shuffledQuestions)
+// console.log(shuffledQuestions)
 
 function playGame(){
+    score = 0;
+    acceptingAnswers = true;
+    yourScore.innerText = score;
+
     currentQuestion = 0
     if(playGame) {
         document.getElementById('start').style.visibility = 'hidden';
@@ -103,10 +141,13 @@ function playGame(){
     displayQuestion(currentQuestion)
 }
 
-document.getElementById('nextBtn').addEventListener('click', nextQuestion)
+// document.getElementById('nextBtn').addEventListener('click', nextQuestion)
 
 //nextquestion
 function nextQuestion() {
+    
+   
+
     const node = document.getElementById('buttonContr')
     while (node.firstChild) {
         node.removeChild(node.lastChild);
@@ -115,3 +156,7 @@ function nextQuestion() {
     currentQuestion++
     displayQuestion(currentQuestion)
 }
+
+
+
+    

@@ -2,26 +2,21 @@
     box-sizing: border-box;
     /* google font bellow */
     font-family: 'Caveat Brush', cursive;
-    /* flex-direction: column; */
-    /* flex-grow: 0; */
-    /* flex-shrink: 0; */
-    /* max-width:  100vh; */
-    /* align-items: center; */
-    /* margin: auto; */
-    
-    /* width: 100vh; */
+
     
 }
+:root {
+    --color-neutral: 200;
+    --color-wrong: 0;
+    --color-correct: 145;
+  }
 
 body{
     background: linear-gradient(#152945 10%,#4186e6);
     padding: 20px;
     display: flex;
     margin: 0;
-    /* height: 100vw; */
-    /* flex-grow: 1; */
-    /* flex-shrink: 0; */
-    /* height: 100vh; */
+   
     justify-content: center;
     align-items: center;
 }
@@ -34,15 +29,10 @@ body{
     border-radius: 25px;
     padding: 10px;
     width: 800px;
-    /* max-width: 80%; */
+   
     text-align: center;
     
-    /* flex-grow: 2; */
-    /* flex-shrink: 1; */
-    /* width: 800px; */
-    /* max-width: 80%; */
-    /* height: 600px; */
-    
+
 }
 /* Title */
 .titleQuestion {
@@ -66,19 +56,20 @@ body{
 }
 /* answers buttons */
 .buttonContr button{
+    /* --color: var(--color-neutral); */
     border-radius: 20px;
     font-size: 50px;
-    background-color: #6ea2eb;
+    /* background-color: #6ea2eb; */
     flex-grow: 0;
     flex-shrink: 1;
-    /* margin: 20px 0; */
+  
     align-items: center;
     
 }
 
 .buttonContr{
     gap: 10px;
-    /* padding: 20px; */
+   
     display: grid;
     grid-template-columns: repeat(2, auto);
     flex-grow: 0;
@@ -88,22 +79,21 @@ body{
 .controlbtn, #nextbtn, #start{
     font-size: 50px;
     padding: 10px;
-    /* margin-top: 3em; */
-    /* margin-bottom: 1px; */
+   
     flex-grow: 0;
     flex-shrink: 1;
     border-radius: 20px;
 }
 #nextbtn{
-    background-color: #6ea2eb;
+    background-color: #adc9f0;
 }
 #start{
     background-color: 	#78E078;
 }
-.buttons:hover,  .nextbt:hover{
+.button:hover,  .nextbt:hover{
     background-color:#99b5dc ;
 }
-.buttons:active, .nextbt:active{
+.button:active, .nextbt:active{
     background-color: #93a2b6;
 }
 
@@ -119,9 +109,13 @@ img{
     border-radius: 20px;
 }
 
-#yourScore{
-    margin: 0px;
-}
-/* .hide{
-    display: none;
-} */
+
+.correct {
+    background-color: rgb(7, 201, 7);
+    color: black;
+  }
+  
+.wrong {
+    background-color: rgb(210, 69, 69);
+  }
+  

@@ -1,15 +1,14 @@
 const questionCont = document.getElementById('questionBox')
+//displaying question images//
+const questionImage = document.getElementById('questionImg')
 const answersBtns = document.querySelectorAll('buttons')
-const nextBtn = document.getElementById('nextBtn')
+const nextBtn = document.getElementById('nextbtn')
 const choiceList = document.getElementById('buttonContr')
-const yourScore = document.getElementById('yourScore')
-const scoreBoard = document.createElement('h3')
-scoreBoard.innerHTML = '0';
-document.getElementById('yourScore').appendChild(h3)
-// let score = 0;
+
+let shuffledQuestions, currentQuestion
 
 
-
+// question Array
 const questions = [
     {
         number : 0,    
@@ -62,92 +61,80 @@ const questions = [
         ]
     }
 ]
-
-
-function userScore() {
-    if (selectedAnswer === 'correct') {
-        scoreCounter = scoreCounter + 5; // increases scoreCounter by 5
-
-        // sets the element text to the current score
-        scoreCounterElemet.innerText = scoreCounter; 
-    }
-    console.log('Increase Score')
-}
-
-//displaying question images//
-const questionImage = document.getElementById('questionImg')
-
-function displayQuestion(currentQuestion){
-    // console.log(shuffledQuestions[currentQuestion])
+//show question
+function displayQuestion(question) {
     questionImage.innerHTML = shuffledQuestions[currentQuestion].questionPic
-    const choices = shuffledQuestions[currentQuestion].choices
-    choices.forEach(choice => {
-        const button = document.createElement('button')
-        button.textContent = choice.answer
-        button.class = 'buttons'
-        button.id = choice.correct
-        button.addEventListener('click', (e) => {
-            if (e.target.id === true) {      
-            
-                // make score go up by one and update dom
-                currentQuestion++                
-                nextQuestion(currentQuestion)
-            } else {
-                currentQuestion++
-                nextQuestion(currentQuestion)
-            }
-            
+     const choices = shuffledQuestions[currentQuestion].choices
 
-        }) 
-        const choiceList = document.getElementById('buttonContr')
-        choiceList.appendChild(button) 
-        
+     choices.forEach(choice => {
+         const button = document.createElement('button')
+         button.textContent = choice.answer
+         button.class = 'buttons'
+         button.id = choice.correct
+      if (choice.correct) {
+        button.dataset.correct = choice.correct
+
+      }
+      button.addEventListener('click', selectAnswer)
+      choiceList.appendChild(button)
     })
-}
+  }
+//selecte choice answer
+  function selectAnswer(e) {
+    const selectedButton = e.target
+    const correct = selectedButton.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(choiceList.children).forEach(button => {
+      setStatusClass(button, button.dataset.correct)
+    })
+    if (shuffledQuestions.length > currentQuestion + 1) {
+   
+    } 
+  }
+  
+  function setStatusClass(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+      element.classList.add('correct')
+   
+    } else {
+      element.classList.add('wrong')
+    }
+  }
+  
+  function clearStatusClass(element) {
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
+  }
 
 
-let score = 0;
-const q =questions
-let userAnswer 
-if (userAnswer === q ){
-    score++
-}
-console
-
-
-//shuffle questions
-let shuffledQuestions, currentQuestion
-
-
-
-//play button and game//
+//play button and next button//
 const playButton = document.getElementById('start')
+
 playButton.addEventListener('click', playGame)
+nextBtn.addEventListener('click', () => {
+    currentQuestion++
+    nextQuestion()
+  })
 
-shuffledQuestions = questions.sort(()=> Math.random()- .5)
-// console.log(shuffledQuestions)
-
+//start game
 function playGame(){
-    score = 0;
-    acceptingAnswers = true;
-    yourScore.innerText = score;
-
+    
+    
+    //shuffle questions
+    shuffledQuestions = questions.sort(()=> Math.random()- .5)
     currentQuestion = 0
     if(playGame) {
         document.getElementById('start').style.visibility = 'hidden';
     } else {
         document.getElementById('start').style.visibility = 'visible';
     }
+   
     displayQuestion(currentQuestion)
 }
 
-// document.getElementById('nextBtn').addEventListener('click', nextQuestion)
-
 //nextquestion
 function nextQuestion() {
-    
-   
-
     const node = document.getElementById('buttonContr')
     while (node.firstChild) {
         node.removeChild(node.lastChild);

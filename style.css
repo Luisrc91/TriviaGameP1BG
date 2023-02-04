@@ -5,11 +5,7 @@
 
     
 }
-:root {
-    --color-neutral: 200;
-    --color-wrong: 0;
-    --color-correct: 145;
-  }
+
 
 body{
     background: linear-gradient(#152945 10%,#4186e6);

@@ -9,10 +9,13 @@ let shuffledQuestions, currentQuestion
 
 
 // question Array
+// https://stackoverflow.com/questions/49729105/how-to-add-an-image-to-javascript-quiz
+// images form https://unsplash.com/
 const questions = [
     {
         number : 0,    
-        questionPic: `<img src='./assets/animalPictures/Dog.jpg' alt="Dog">`,
+        questionPic: `<img src='./assets/animalPictures/Dog.jpg' alt="Dog"credits="Taylor Kopel
+        ">`,
         choices: [
             {answer: 'Dog', correct: true}, 
             {answer: 'Cat', correct: false},
@@ -22,7 +25,7 @@ const questions = [
     },
     {
         number : 1, 
-        questionPic: `<img src='./assets/animalPictures/Tiger.jpg' alt="Tiger">`,
+        questionPic: `<img src='./assets/animalPictures/Tiger.jpg' alt="Tiger"credits="A G">`,
         choices: [
             {answer: 'Lion', correct: false}, 
             {answer: 'Tiger', correct: true},
@@ -32,7 +35,7 @@ const questions = [
     },
     {
         number : 2, 
-        questionPic: `<img src='./assets/animalPictures/Rhino.jpg' alt="Rhino">`,
+        questionPic: `<img src='./assets/animalPictures/Rhino.jpg' alt="Rhino"credits="Glen Carrie" >`,
         choices: [
             {answer: 'Elephant', correct: false}, 
             {answer: 'Turtle', correct: false},
@@ -42,7 +45,7 @@ const questions = [
     },
     {
         number : 3, 
-        questionPic:`<img src='./assets/animalPictures/Turkey.jpg' alt="Turkey">`,
+        questionPic:`<img src='./assets/animalPictures/Turkey.jpg' alt="Turkey"credits="Chris Henry">`,
         choices: [
             {answer: 'Chicken', correct: false}, 
             {answer: 'Pig', correct: false},
@@ -52,7 +55,8 @@ const questions = [
     },
     {
         number : 4, 
-        questionPic: `<img src='./assets/animalPictures/polarBear.jpg' alt="Polar Bear">`,
+        questionPic: `<img src='./assets/animalPictures/polarBear.jpg' alt="Polar Bear" credits= 
+        "Hans-Jurgen Mager">`,
         choices: [
             {answer: 'Zebra', correct: false}, 
             {answer: 'Polar Bear', correct: true},
@@ -62,24 +66,26 @@ const questions = [
     }
 ]
 //show question
-function displayQuestion(question) {
-    questionImage.innerHTML = shuffledQuestions[currentQuestion].questionPic
+function displayQuestion(currentQuestion) {
+     questionImage.innerHTML = shuffledQuestions[currentQuestion].questionPic
      const choices = shuffledQuestions[currentQuestion].choices
-
      choices.forEach(choice => {
          const button = document.createElement('button')
          button.textContent = choice.answer
          button.class = 'buttons'
          button.id = choice.correct
-      if (choice.correct) {
+         button.addEventListener('click', selectAnswer)
+      if (choice.correct) {        
         button.dataset.correct = choice.correct
 
-      }
-      button.addEventListener('click', selectAnswer)
+    }  else{
+        
+    }     
       choiceList.appendChild(button)
     })
   }
 //selecte choice answer
+// https://stackoverflow.com/questions/66308020/how-to-add-a-score-function-to-my-quiz-using-javascript
   function selectAnswer(e) {
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
@@ -87,9 +93,7 @@ function displayQuestion(question) {
     Array.from(choiceList.children).forEach(button => {
       setStatusClass(button, button.dataset.correct)
     })
-    if (shuffledQuestions.length > currentQuestion + 1) {
-   
-    } 
+    if (shuffledQuestions.length > currentQuestion + 1) {} 
   }
   
   function setStatusClass(element, correct) {
@@ -100,8 +104,7 @@ function displayQuestion(question) {
     } else {
       element.classList.add('wrong')
     }
-  }
-  
+  }  
   function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
@@ -118,9 +121,7 @@ nextBtn.addEventListener('click', () => {
   })
 
 //start game
-function playGame(){
-    
-    
+function playGame(){     
     //shuffle questions
     shuffledQuestions = questions.sort(()=> Math.random()- .5)
     currentQuestion = 0
@@ -128,8 +129,7 @@ function playGame(){
         document.getElementById('start').style.visibility = 'hidden';
     } else {
         document.getElementById('start').style.visibility = 'visible';
-    }
-   
+    }   
     displayQuestion(currentQuestion)
 }
 

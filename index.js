@@ -14,8 +14,7 @@ let shuffledQuestions, currentQuestion
 const questions = [
     {
         number : 0,    
-        questionPic: `<img src='./assets/animalPictures/Dog.jpg' alt="Dog"credits="Taylor Kopel
-        ">`,
+        questionPic: `<img src='./assets/animalPictures/Dog.jpg' alt="Dog" credits="Taylor Kopel">`,
         choices: [
             {answer: 'Dog', correct: true}, 
             {answer: 'Cat', correct: false},
@@ -25,7 +24,7 @@ const questions = [
     },
     {
         number : 1, 
-        questionPic: `<img src='./assets/animalPictures/Tiger.jpg' alt="Tiger"credits="A G">`,
+        questionPic: `<img src='./assets/animalPictures/Tiger.jpg' alt="Tiger" credits="A G">`,
         choices: [
             {answer: 'Lion', correct: false}, 
             {answer: 'Tiger', correct: true},
@@ -35,7 +34,7 @@ const questions = [
     },
     {
         number : 2, 
-        questionPic: `<img src='./assets/animalPictures/Rhino.jpg' alt="Rhino"credits="Glen Carrie" >`,
+        questionPic: `<img src='./assets/animalPictures/Rhino.jpg' alt="Rhino" credits="Glen Carrie" >`,
         choices: [
             {answer: 'Elephant', correct: false}, 
             {answer: 'Turtle', correct: false},
@@ -45,7 +44,7 @@ const questions = [
     },
     {
         number : 3, 
-        questionPic:`<img src='./assets/animalPictures/Turkey.jpg' alt="Turkey"credits="Chris Henry">`,
+        questionPic:`<img src='./assets/animalPictures/Turkey.jpg' alt="Turkey" credits="Chris Henry">`,
         choices: [
             {answer: 'Chicken', correct: false}, 
             {answer: 'Pig', correct: false},
@@ -55,8 +54,7 @@ const questions = [
     },
     {
         number : 4, 
-        questionPic: `<img src='./assets/animalPictures/polarBear.jpg' alt="Polar Bear" credits= 
-        "Hans-Jurgen Mager">`,
+        questionPic: `<img src='./assets/animalPictures/polarBear.jpg' alt="Polar Bear" credits="Hans-Jurgen Mager">`,
         choices: [
             {answer: 'Zebra', correct: false}, 
             {answer: 'Polar Bear', correct: true},
@@ -109,7 +107,7 @@ function displayQuestion(currentQuestion) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
   }
-
+  shuffledQuestions = questions.sort(()=> Math.random()- .5)
 
 //play button and next button//
 const playButton = document.getElementById('start')
@@ -123,7 +121,7 @@ nextBtn.addEventListener('click', () => {
 //start game
 function playGame(){     
     //shuffle questions
-    shuffledQuestions = questions.sort(()=> Math.random()- .5)
+   
     currentQuestion = 0
     if(playGame) {
         document.getElementById('start').style.visibility = 'hidden';
@@ -140,7 +138,7 @@ function nextQuestion() {
         node.removeChild(node.lastChild);
     }
 
-    currentQuestion++
+    currentQuestion.length
     displayQuestion(currentQuestion)
 }
 

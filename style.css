@@ -6,11 +6,13 @@
 
 
 body{
-    background: linear-gradient(#152945 10%,#4186e6);
-    padding: 20px;
+    background: linear-gradient(#4171b6 10%,#87b1ed);
+    padding: 0;
     display: flex;
     margin: 0;
-   
+   width: 100vw;
+
+   height: 100vh;
     justify-content: center;
     align-items: center;
 }
@@ -79,17 +81,17 @@ body{
     border-radius: 20px;
 }
 #nextbtn{
-    background-color: #adc9f0;
+    background-color: #f69c43;
 }
 #start{
     background-color: 	#78E078;
 }
-.button:hover,  .nextbt:hover{
-    background-color:#99b5dc ;
+#buttons:hover,  #nextbtn:hover{
+    background-color:#d99857 ;
 }
-.button:active, .nextbt:active{
+/* #buttons:active, #nextbtn:active{
     background-color: #93a2b6;
-}
+} */
 
 #start:hover{
     background-color: 	#6fb76f;

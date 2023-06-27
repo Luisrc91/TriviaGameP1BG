@@ -1,0 +1,99 @@
+.buttons, #nextbtn, #start {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 8px 20px;
+  margin: 3px;
+}
+.buttons:hover, #nextbtn:hover, #start:hover {
+  transform: scale(1.2);
+}
+
+#start {
+  background-color: #27a041;
+  color: white;
+}
+
+#nextbtn {
+  background-color: #6cacb7;
+  color: white;
+}
+
+.buttons {
+  background-color: #27a041;
+  color: white;
+}
+
+.correct {
+  background-color: rgb(7, 201, 7);
+  color: black;
+}
+
+.wrong {
+  background-color: rgb(210, 69, 69);
+}
+
+.buttonContr button {
+  border-radius: 20px;
+  font-size: 50px;
+  flex-grow: 0;
+  flex-shrink: 1;
+  align-items: center;
+}
+
+.buttonContr {
+  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  flex-grow: 0;
+  flex-shrink: 1;
+}
+
+.controlbtn, #nextbtn, #start {
+  font-size: 50px;
+  padding: 10px;
+  flex-grow: 0;
+  flex-shrink: 1;
+  border-radius: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #a59c1f;
+  font-family: Trebuchet MS, Arial, sans-serif;
+  line-height: 1;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  display: flex;
+  margin: 0;
+}
+
+img {
+  border-radius: 10%;
+  width: 300px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  background-color: #a2d0fc;
+  color: black;
+  width: 800px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 25px;
+  box-shadow: 2px 40px 90px 1px rgb(14, 36, 43);
+  border-color: rgb(242, 242, 242);
+  border: 8px solid;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -50,12 +50,10 @@ body{
     flex-shrink: 1;
 
 }
-/* answers buttons */
+/* answers buttons*/
 .buttonContr button{
-    /* --color: var(--color-neutral); */
     border-radius: 20px;
     font-size: 50px;
-    /* background-color: #6ea2eb; */
     flex-grow: 0;
     flex-shrink: 1;
   
@@ -89,9 +87,7 @@ body{
 #buttons:hover,  #nextbtn:hover{
     background-color:#d99857 ;
 }
-/* #buttons:active, #nextbtn:active{
-    background-color: #93a2b6;
-} */
+
 
 #start:hover{
     background-color: 	#6fb76f;
@@ -114,4 +110,3 @@ img{
 .wrong {
     background-color: rgb(210, 69, 69);
   }
-  

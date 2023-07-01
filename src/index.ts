@@ -1,11 +1,14 @@
-const questionCont = document.getElementById('questionBox')
-//displaying question images//
-const questionImage = document.getElementById('questionImg')
-const answersBtns = document.querySelectorAll('buttons')
-const nextBtn = document.getElementById('nextbtn')
-const choiceList = document.getElementById('buttonContr')
+// require('dotenv').config()
 
-let shuffledQuestions, currentQuestion
+
+const questionCont = document.getElementById('questionBox') as HTMLElement;
+//displaying question images//
+const questionImage = document.getElementById('questionImg') as HTMLElement;
+const answersBtns = document.querySelectorAll('buttons') as NodeListOf<HTMLButtonElement>;
+const nextBtn = document.getElementById('nextbtn') as HTMLElement;
+const choiceList = document.getElementById('buttonContr') as HTMLElement;
+
+let shuffledQuestions: Array<any>, currentQuestion: number
 
 
 // question Array
@@ -64,37 +67,34 @@ const questions = [
     }
 ]
 //show question
-function displayQuestion(currentQuestion) {
-     questionImage.innerHTML = shuffledQuestions[currentQuestion].questionPic
-     const choices = shuffledQuestions[currentQuestion].choices
-     choices.forEach(choice => {
-         const button = document.createElement('button')
-         button.textContent = choice.answer
-         button.class = 'buttons'
-         button.id = choice.correct
-         button.addEventListener('click', selectAnswer)
-      if (choice.correct) {        
-        button.dataset.correct = choice.correct
-
-    }  else{
-        
-    }     
-      choiceList.appendChild(button)
-    })
-  }
+function displayQuestion(currentQuestion: number) {
+  questionImage.innerHTML = shuffledQuestions[currentQuestion].questionPic;
+  const choices = shuffledQuestions[currentQuestion].choices;
+  choices.forEach((choice: { answer: string | null; correct: boolean | undefined }) => {
+    const button = document.createElement('button');
+    button.textContent = choice.answer;
+    button.className = 'buttons';
+    button.id = choice.correct ? choice.correct.toString() : '';
+    button.addEventListener('click', selectAnswer);
+    if (choice.correct !== undefined) {
+      button.dataset.correct = choice.correct.toString();
+    }
+    choiceList.appendChild(button);
+  });
+}
 //selecte choice answer
 // https://stackoverflow.com/questions/66308020/how-to-add-a-score-function-to-my-quiz-using-javascript
-  function selectAnswer(e) {
-    const selectedButton = e.target
-    const correct = selectedButton.dataset.correct
-    setStatusClass(document.body, correct)
-    Array.from(choiceList.children).forEach(button => {
-      setStatusClass(button, button.dataset.correct)
-    })
-    if (shuffledQuestions.length > currentQuestion + 1) {} 
-  }
-  
-  function setStatusClass(element, correct) {
+function selectAnswer(e: { target: any }) {
+  const selectedButton = e.target;
+  const correct = selectedButton.dataset?.correct;
+  setStatusClass(document.body, correct);
+  Array.from(choiceList.children).forEach((button: Element) => {
+    const buttonCorrect = (button as HTMLElement).dataset?.correct;
+    setStatusClass(button as HTMLElement, buttonCorrect);
+  });
+  if (shuffledQuestions.length > currentQuestion + 1) {}
+}
+  function setStatusClass(element: HTMLElement, correct: any) {
     clearStatusClass(element)
     if (correct) {
       element.classList.add('correct')
@@ -103,14 +103,14 @@ function displayQuestion(currentQuestion) {
       element.classList.add('wrong')
     }
   }  
-  function clearStatusClass(element) {
+  function clearStatusClass(element: { classList: { remove: (arg0: string) => void } }) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
   }
   shuffledQuestions = questions.sort(()=> Math.random()- .5)
 
 //play button and next button//
-const playButton = document.getElementById('start')
+const playButton = document.getElementById('start') as HTMLButtonElement
 
 playButton.addEventListener('click', playGame)
 nextBtn.addEventListener('click', () => {
@@ -119,29 +119,30 @@ nextBtn.addEventListener('click', () => {
   })
 
 //start game
-function playGame(){     
-    //shuffle questions
-   
-    currentQuestion = 0
-    if(playGame) {
-        document.getElementById('start').style.visibility = 'hidden';
-    } else {
-        document.getElementById('start').style.visibility = 'visible';
-    }   
-    displayQuestion(currentQuestion)
+function playGame() {     
+  // Shuffle questions
+  currentQuestion = 0;
+  const startButton = document.getElementById('start');
+  if (startButton) {
+    startButton.style.visibility = 'hidden';
+  } else {
+    // Handle the case when 'start' element is not found
+  }   
+  displayQuestion(currentQuestion);
 }
 
 //nextquestion
 function nextQuestion() {
     const node = document.getElementById('buttonContr')
-    while (node.firstChild) {
-        node.removeChild(node.lastChild);
+    while (node?.firstChild) {
+        node.removeChild(node.firstChild);
     }
 
-    currentQuestion.length
+    currentQuestion++;
     displayQuestion(currentQuestion)
 }
 
 
 
     
+// app.listen(process.env.PORT)
